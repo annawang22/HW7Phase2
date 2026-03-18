@@ -1,0 +1,6 @@
+AI Used: Claude AI (March 2026 version)
+
+Initially attached all files.
+I am picking up a classmates project and i am supposed to finish the recreation of fireboy and watergirl in an hour. first, could you walk me through the structure of this code, explain to me the main functions, identify bugs or incomplete sections. next, with the time constraint, could you tell me what would be the most impactful changes i could make to advance this project to completion? don't write any code yet. just explain. i will tell you when to code.
+
+let's start by tackling: 2. Redesign the level layout (20 min). take me through the process step by step and give me ways to check that it is working before i confirm to you about moving to the next step
