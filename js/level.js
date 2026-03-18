@@ -30,7 +30,8 @@ const levelData = {
         { x: 290, y: 280, width: 30, height: 10, linkId: 'gate1', color: '#a832a8' }  // Platform 2 — hold to let first character follow
     ],
     leversInfo: [
-        { x: 430, y: 250, width: 30, height: 40, linkId: 'lift1' }
+        { x: 430, y: 250, width: 30, height: 40, linkId: 'lift1' }, // Platform 2 — pull to raise lift
+        { x: 520, y: 140, width: 30, height: 40, linkId: 'lift1' }  // Platform 3 — pull again to hold lift up for second character
     ],
     gatesInfo: [
         { x: 275, y: 220, width: 20, height: 70, id: 'gate1', color: '#a832a8' }

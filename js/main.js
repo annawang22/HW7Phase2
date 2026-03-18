@@ -111,14 +111,14 @@ function update(dt) {
     // Or just simple overlap + down to pull. Let's make it simpler: touching it pulls it slowly.
     // In fireboy and watergirl, you just stand near it and it toggles.
     levers.forEach(l => {
-        if (l.cooldown <= 0) {
-            let fireTouched = checkAABB(fireboy, l);
-            let waterTouched = checkAABB(watergirl, l);
-            if (fireTouched || waterTouched) {
-                l.isPulled = !l.isPulled;
-                l.cooldown = 1.0; // 1 second cooldown
-            }
+        let fireTouched  = checkAABB(fireboy, l);
+        let waterTouched = checkAABB(watergirl, l);
+        let anyTouched   = fireTouched || waterTouched;
+        // Only toggle on the moment of contact, not while standing in it
+        if (anyTouched && !l.wasTouched) {
+            l.isPulled = !l.isPulled;
         }
+        l.wasTouched = anyTouched;
     });
     
     // Elemental pools collision
