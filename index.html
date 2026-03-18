@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fireboy & Watergirl</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Nunito:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Main Game Canvas (800x600 match aspect ratio of original approx) -->
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        
+        <!-- UI Overlay -->
+        <div id="ui-layer">
+            <div id="timer-display">00:00</div>
+        </div>
+        
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen visible">
+            <h1>Fireboy & Watergirl</h1>
+            <p>Use Arrows for Fireboy, WASD for Watergirl.</p>
+            <p>Get to your respective doors. Don't touch the opposite element!</p>
+            <button id="start-button">Start Game</button>
+        </div>
+        
+        <!-- Game Over / Victory Screen -->
+        <div id="end-screen" class="screen hidden">
+            <h1 id="end-title">Game Over</h1>
+            <p id="end-message"></p>
+            <p>Time: <span id="final-time">00:00</span></p>
+            <p>Rank: <span id="final-rank">A</span></p>
+            <button id="restart-button">Restart Level</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/input.js"></script>
+    <script src="js/physics.js"></script>
+    <script src="js/level.js"></script>
+    <script src="js/entities.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
