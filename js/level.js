@@ -7,8 +7,8 @@ const levelData = {
         { x: 750, y: 0, width: 50, height: 550 }, // Right wall
         { x: 0, y: 0, width: 800, height: 50 },   // Ceiling
         
-        // Step 1 — small step up from ground on the left (reachable in 1 jump from spawn)
-        { x: 50,  y: 470, width: 80,  height: 20 },
+        // Step 1 — sits on top of the lava pool (x:300, y:530), same x and width
+        { x: 300, y: 510, width: 90,  height: 20 },
         // Platform 1 — wide ledge, reachable from Step 1 (1 jump up ~90px)
         { x: 50,  y: 380, width: 200, height: 20 },
         // Platform 2 — middle ledge, reachable from right edge of P1 (1 jump right+up)
