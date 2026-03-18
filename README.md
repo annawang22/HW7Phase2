@@ -2,17 +2,19 @@
 ## Tasks completed
 - Fix the platform heights so characters can reach
 - Have platforms lead to doors
-- Fix placement of instructions
-- Fix button logic
-- Fix lever logic 
-- Fix level layout
+- Fixed placement of instructions
+- Fixed button logic
+- Fixed lever logic 
+- Fixed level layout
+- Fixed animation UI design
 
 ## Challenges faced
-- Getting level layout 
-- A lot of hardcoding numbers rather than logic
+- A lot of hardcoding numbers rather than logic for level layout
+- There's
 
 ## What I would do if I had more time
 - Make more levels and somehow randomize level layouts, but still have it make sense
+-
 
 
 # Previous README from author

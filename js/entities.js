@@ -70,10 +70,10 @@ class Player extends Entity {
         // Legs
         ctx.fillStyle = '#b01818';
         ctx.beginPath();
-        ctx.roundRect(-10, 10, 8, 10, [0, 0, 4, 4]);
+        ctx.rect(-10, 10, 8, 10, [0, 0, 4, 4]);
         ctx.fill();
         ctx.beginPath();
-        ctx.roundRect(2, 10, 8, 10, [0, 0, 4, 4]);
+        ctx.rect(2, 10, 8, 10, [0, 0, 4, 4]);
         ctx.fill();
 
         // Body
@@ -82,7 +82,7 @@ class Player extends Entity {
         bodyGrad.addColorStop(1, '#cc1a00');
         ctx.fillStyle = bodyGrad;
         ctx.beginPath();
-        ctx.roundRect(-10, -2, 20, 14, 4);
+        ctx.rect(-10, -2, 20, 14, 4);
         ctx.fill();
 
         // Flame head
@@ -148,10 +148,10 @@ class Player extends Entity {
         // Legs
         ctx.fillStyle = '#1440b0';
         ctx.beginPath();
-        ctx.roundRect(-10, 10, 8, 10, [0, 0, 4, 4]);
+        ctx.rect(-10, 10, 8, 10, [0, 0, 4, 4]);
         ctx.fill();
         ctx.beginPath();
-        ctx.roundRect(2, 10, 8, 10, [0, 0, 4, 4]);
+        ctx.rect(2, 10, 8, 10, [0, 0, 4, 4]);
         ctx.fill();
 
         // Body
@@ -160,7 +160,7 @@ class Player extends Entity {
         bodyGrad.addColorStop(1, '#1e50d0');
         ctx.fillStyle = bodyGrad;
         ctx.beginPath();
-        ctx.roundRect(-10, -2, 20, 14, 4);
+        ctx.rect(-10, -2, 20, 14, 4);
         ctx.fill();
 
         // Teardrop head
@@ -298,7 +298,7 @@ class Door extends Entity {
         // Stone frame
         ctx.fillStyle = '#3d2b1a';
         ctx.beginPath();
-        ctx.roundRect(this.x - 4, this.y - 4, this.width + 8, this.height + 4, 4);
+        ctx.rect(this.x - 4, this.y - 4, this.width + 8, this.height + 4, 4);
         ctx.fill();
         ctx.fillStyle = '#2a1a08';
         ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -340,7 +340,7 @@ class Button extends Entity {
 
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.roundRect(this.x, yOff, this.width, h, 3);
+        ctx.rect(this.x, yOff, this.width, h, 3);
         ctx.fill();
 
         ctx.fillStyle = 'rgba(255,255,255,0.28)';
@@ -374,11 +374,9 @@ class Lever extends Entity {
         const bx = this.x + this.width / 2;
         const by = this.y + this.height;
 
-        // Base
+        // Base — use fillRect to avoid roundRect browser compatibility issues
         ctx.fillStyle = '#7a5010';
-        ctx.beginPath();
-        ctx.roundRect(this.x - 3, by - 8, this.width + 6, 9, 3);
-        ctx.fill();
+        ctx.fillRect(this.x - 3, by - 8, this.width + 6, 9);
         ctx.fillStyle = '#c8860a';
         ctx.fillRect(this.x, by - 7, this.width, 5);
 
@@ -438,8 +436,8 @@ class Gate extends Entity {
         this.y += (targetY - this.y) * 5 * dt;
     }
     draw(ctx) {
-        const visible = this.startY - this.y;
-        if (visible < 2) return;
+        // Hide only when fully raised (y has moved up by a full height)
+        if (this.y < this.startY - this.height + 2) return;
 
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -479,7 +477,7 @@ class Lift extends Entity {
         grad.addColorStop(1, '#8a6030');
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.roundRect(this.x, this.y, this.width, this.height, 3);
+        ctx.rect(this.x, this.y, this.width, this.height, 3);
         ctx.fill();
 
         // Top highlight
@@ -490,7 +488,7 @@ class Lift extends Entity {
         ctx.strokeStyle = '#604820';
         ctx.lineWidth = 1.5;
         ctx.beginPath();
-        ctx.roundRect(this.x, this.y, this.width, this.height, 3);
+        ctx.rect(this.x, this.y, this.width, this.height, 3);
         ctx.stroke();
 
         // Rivets
