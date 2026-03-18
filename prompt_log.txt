@@ -18,3 +18,8 @@ actually i got this wrong . levers  should only move once. so once one character
 
 OPEN NEW CHAT
 This is part of my code for recreating fireboy an watergirl. this is my current problem: levers  should only move once. so once one character shifts the lever, it should forever keep the beam at a height that which both characters can then use to get to the one above that beam. help me fix this
+
+attached image of original game and relavent code
+could you get the visuals/animation to look more like the picture i attached.
+
+there is now a glitch with the lever. the lever isn't there to start until you push the lever it appears but then it disappears. please help me find the error and debug it.

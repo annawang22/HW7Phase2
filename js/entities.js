@@ -354,14 +354,23 @@ class Lever extends Entity {
         this.linkId = linkId;
         this.isPulled = false;
         this.cooldown = 0;
-        this.animAngle = -1;
+        this.animAngle = -1; // -1 = left (unpulled), +1 = right (pulled)
+        this._firstDraw = true;
     }
     update(dt) {
         if (this.cooldown > 0) this.cooldown -= dt;
         const target = this.isPulled ? 1 : -1;
-        this.animAngle += (target - this.animAngle) * 10 * dt;
+        // Clamp dt to avoid overshooting on the first large frame gap
+        const safeDt = Math.min(dt, 0.05);
+        this.animAngle += (target - this.animAngle) * 10 * safeDt;
     }
     draw(ctx) {
+        // Snap to correct position on very first draw, before any update() runs
+        if (this._firstDraw) {
+            this.animAngle = this.isPulled ? 1 : -1;
+            this._firstDraw = false;
+        }
+
         const bx = this.x + this.width / 2;
         const by = this.y + this.height;
 
@@ -394,8 +403,8 @@ class Lever extends Entity {
         ctx.lineTo(tx, ty);
         ctx.stroke();
 
-        // Knob
-        const kg = ctx.createRadialGradient(tx - 2, ty - 2, 1, tx, ty, 7);
+        // Knob — inner radius center offset slightly to avoid degenerate gradient crash
+        const kg = ctx.createRadialGradient(tx - 1.5, ty - 1.5, 0.5, tx, ty, 7);
         kg.addColorStop(0, '#fff0a0');
         kg.addColorStop(0.5, '#ffcc00');
         kg.addColorStop(1, '#996600');
