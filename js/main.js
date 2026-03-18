@@ -111,12 +111,15 @@ function update(dt) {
     // Or just simple overlap + down to pull. Let's make it simpler: touching it pulls it slowly.
     // In fireboy and watergirl, you just stand near it and it toggles.
     levers.forEach(l => {
+        // Once pulled, a lever stays pulled forever — it's a one-shot mechanism
+        if (l.isPulled) return;
+
         let fireTouched  = checkAABB(fireboy, l);
         let waterTouched = checkAABB(watergirl, l);
         let anyTouched   = fireTouched || waterTouched;
-        // Only toggle on the moment of contact, not while standing in it
+        // Only activate on the rising edge of contact (moment of first touch)
         if (anyTouched && !l.wasTouched) {
-            l.isPulled = !l.isPulled;
+            l.isPulled = true;
         }
         l.wasTouched = anyTouched;
     });

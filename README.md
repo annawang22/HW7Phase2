@@ -1,17 +1,35 @@
-# Main tasks that are left
+# After 1 Hour of work 
+## Tasks completed
+- Fix the platform heights so characters can reach
+- Have platforms lead to doors
+- Fix placement of instructions
+- Fix button logic
+- Fix lever logic 
+- Fix level layout
+
+## Challenges faced
+- Getting level layout 
+- A lot of hardcoding numbers rather than logic
+
+## What I would do if I had more time
+- Make more levels and somehow randomize level layouts, but still have it make sense
+
+
+# Previous README from author
+## Main tasks that are left
 - Fix how different parts are floating
 - Platform height needs to take into consideration height of jump
 - The instructions in the wrong place
 - The platforms do not lead to the doors
 
-# To test the game:
+## To test the game:
 - Open a terminal in /Users/rion/Desktop/Github/15113-hw7
 - Run python3 -m http.server 8000
 - Visit http://localhost:8000 in your web browser.
 
 --------
 
-# General vision for project
+## General vision for project
 Recreate the game fireboy and Watergirl. 
 Core Gameplay Mechanics: Each character is immune to their own element but instantly dies if they touch the opposing one.
 - Fireboy: Can walk through lava/fire pools.Dies instantly if he touches water

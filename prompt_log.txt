@@ -13,3 +13,8 @@ Here is my updated level.js code. here are some of the problems at hand. 1. when
 move to issue 2
 
 move to issue 3
+
+actually i got this wrong . levers  should only move once. so once one character shifts the lever, it should forever keep the beam at a height that which both characters can then use to get to the one above that beam. help me fix this
+
+OPEN NEW CHAT
+This is part of my code for recreating fireboy an watergirl. this is my current problem: levers  should only move once. so once one character shifts the lever, it should forever keep the beam at a height that which both characters can then use to get to the one above that beam. help me fix this
