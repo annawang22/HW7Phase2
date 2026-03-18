@@ -1,4 +1,8 @@
-# Tasks left
+# Main tasks that are left
+- Fix how different parts are floating
+- Platform height needs to take into consideration height of jump
+- The instructions in the wrong place
+- The platforms do not lead to the doors
 
 # To test the game:
 - Open a terminal in /Users/rion/Desktop/Github/15113-hw7
