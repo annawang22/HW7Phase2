@@ -10,11 +10,11 @@
 
 ## Challenges faced
 - A lot of hardcoding numbers rather than logic for level layout
-- There's
+- Difficult if you don't know the game at all
 
 ## What I would do if I had more time
 - Make more levels and somehow randomize level layouts, but still have it make sense
--
+- Create a main menu
 
 
 # Previous README from author

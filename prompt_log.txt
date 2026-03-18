@@ -23,3 +23,5 @@ attached image of original game and relavent code
 could you get the visuals/animation to look more like the picture i attached.
 
 there is now a glitch with the lever. the lever isn't there to start until you push the lever it appears but then it disappears. please help me find the error and debug it.
+
+oh wait sorry i meant that the bar that the buttons controls doesn't show up unless the buttons is pressed.
