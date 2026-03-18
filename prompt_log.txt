@@ -9,3 +9,7 @@ attached picture of the current view of game
 based on the changes you gave, please help me step by step to fix the following changes: move the instructions to the top of the game where it doesn't block any part of the game. make sure that the obstacles also don't fall where the instructions are either. fix the path to the doors. currently there is no way or logic to reach the doors. make sure that both characters start at the same posititon side by side.
 
 Here is my updated level.js code. here are some of the problems at hand. 1. when one character holds the purple button and allows the other character to go through the original character has no way of getting to the next bar. 2. there is also a glitch when one character holds the lever, the bar moves up but then comes back down right after, also how is the character holding the lever supposed to get to the next beam? please take these issues into consideration. 3. another problem is the timer is counting up. i want the timer to countdown from 1 minutes down and if time is up then it is game over. please fix each issue one at a time. do not move on to the next one until my confimation
+
+move to issue 2
+
+move to issue 3
