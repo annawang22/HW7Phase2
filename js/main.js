@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 
 let lastTime = 0;
 let gameState = 'START'; // START, PLAYING, GAMEOVER, VICTORY
-let timeRemaining = 60; // countdown from 60 seconds
+let elapsedTime = 0; // seconds
 
 // Game Objects
 let fireboy;
@@ -26,7 +26,7 @@ function initGame() {
     gates = levelData.gatesInfo ? levelData.gatesInfo.map(g => new Gate(g.x, g.y, g.width, g.height, g.id, g.color)) : [];
     lifts = levelData.liftsInfo ? levelData.liftsInfo.map(l => new Lift(l.x, l.y, l.width, l.height, l.id, l.targetY)) : [];
     gems = levelData.gemsInfo ? levelData.gemsInfo.map(g => new Gem(g.x, g.y, g.type)) : [];
-    timeRemaining = 60;
+    elapsedTime = 0;
     lastTime = performance.now();
     gameState = 'PLAYING';
     document.getElementById('start-screen').classList.replace('visible', 'hidden');
@@ -36,14 +36,8 @@ function initGame() {
 function update(dt) {
     if (gameState !== 'PLAYING') return;
     
-    timeRemaining -= dt;
-    if (timeRemaining <= 0) {
-        timeRemaining = 0;
-        document.getElementById('timer-display').innerText = formatTime(timeRemaining);
-        gameOver("Time's up!");
-        return;
-    }
-    document.getElementById('timer-display').innerText = formatTime(timeRemaining);
+    elapsedTime += dt;
+    document.getElementById('timer-display').innerText = formatTime(elapsedTime);
     
     // Controls Fireboy
     if (keys.left) fireboy.velocityX = -fireboy.speed;
@@ -117,14 +111,14 @@ function update(dt) {
     // Or just simple overlap + down to pull. Let's make it simpler: touching it pulls it slowly.
     // In fireboy and watergirl, you just stand near it and it toggles.
     levers.forEach(l => {
-        if (l.cooldown <= 0) {
-            let fireTouched = checkAABB(fireboy, l);
-            let waterTouched = checkAABB(watergirl, l);
-            if (fireTouched || waterTouched) {
-                l.isPulled = !l.isPulled;
-                l.cooldown = 1.0; // 1 second cooldown
-            }
+        let fireTouched  = checkAABB(fireboy, l);
+        let waterTouched = checkAABB(watergirl, l);
+        let anyTouched   = fireTouched || waterTouched;
+        // Only toggle on the moment of contact, not while standing in it
+        if (anyTouched && !l.wasTouched) {
+            l.isPulled = !l.isPulled;
         }
+        l.wasTouched = anyTouched;
     });
     
     // Elemental pools collision
@@ -182,9 +176,9 @@ function levelComplete() {
     let totalGems = gems.length;
     let collectedGems = gems.filter(g => g.isCollected).length;
     document.getElementById('end-message').innerText = `You both made it! Gems: ${collectedGems}/${totalGems}`;
-    document.getElementById('final-time').innerText = formatTime(timeRemaining);
+    document.getElementById('final-time').innerText = formatTime(elapsedTime);
     
-    let rank = timeRemaining > 30 && collectedGems === totalGems ? 'A' : (timeRemaining > 10 ? 'B' : 'C');
+    let rank = elapsedTime < 60 && collectedGems === totalGems ? 'A' : (elapsedTime < 120 ? 'B' : 'C');
     document.getElementById('final-rank').innerText = rank;
     document.getElementById('end-screen').classList.replace('hidden', 'visible');
 }
