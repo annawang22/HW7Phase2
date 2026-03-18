@@ -8,7 +8,7 @@ const levelData = {
         { x: 0, y: 0, width: 800, height: 50 },   // Ceiling
         
         // Step 1 — sits on top of the lava pool (x:300, y:530), same x and width
-        { x: 300, y: 510, width: 90,  height: 20 },
+        { x: 300, y: 460, width: 90,  height: 20 },
         // Platform 1 — wide ledge, reachable from Step 1 (1 jump up ~90px)
         { x: 50,  y: 380, width: 200, height: 20 },
         // Platform 2 — middle ledge, reachable from right edge of P1 (1 jump right+up)
@@ -26,7 +26,8 @@ const levelData = {
         { x: 680, y: 115, width: 45, height: 65, type: 'water' }
     ],
     buttonsInfo: [
-        { x: 190, y: 370, width: 30, height: 10, linkId: 'gate1', color: '#a832a8' }
+        { x: 190, y: 370, width: 30, height: 10, linkId: 'gate1', color: '#a832a8' }, // Platform 1 — hold to let other through
+        { x: 290, y: 280, width: 30, height: 10, linkId: 'gate1', color: '#a832a8' }  // Platform 2 — hold to let first character follow
     ],
     leversInfo: [
         { x: 430, y: 250, width: 30, height: 40, linkId: 'lift1' }
